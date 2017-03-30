@@ -1,0 +1,32 @@
+include <bits/stdc++.h>
+
+using namespace std;
+int main()
+{
+	
+	int n;
+	bool isPrime[1000];
+
+	cin >> n;
+
+	for (int i = 1; i <= n; i++)
+	{
+		isPrime[i] = true;
+	}
+
+	isPrime[1] = false;
+	int k = 1;
+	while (k <= sqrt(n))
+	{
+		while (isPrime[k] ==  false) k++;
+
+		for(int i = k+k; i <= sqrt(n); i+= k)
+			isPrime[i] = false;
+	}
+
+	for(int i = 1; i <= sqrt(n); i++)
+		if(isPrime[i])
+			cout << i << ' ';
+
+	return 0;
+}
